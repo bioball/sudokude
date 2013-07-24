@@ -1,5 +1,3 @@
-require 'erb'
-
 class Sudoku
   def initialize(sudoku)
     raise "This is not the proper size" if sudoku.map {|e| e.size } != [9,9,9,9,9,9,9,9,9]
