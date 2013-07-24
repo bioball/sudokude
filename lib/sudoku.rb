@@ -127,12 +127,3 @@ class Array
     self.select {|e| (e-item).empty? }.size == item.size
   end
 end
-
-
-b = Sudoku.new([[4,nil,9,1,3,7,nil,nil,nil],[nil,nil,nil,8,2,9,nil,6,nil],[2,nil,7,nil,nil,nil,nil,9,nil],[nil,5,6,nil,nil,8,nil,nil,9],[nil,nil,nil,3,5,1,nil,nil,6],[1,nil,nil,nil,nil,nil,8,5,nil],[nil,nil,nil,nil,1,nil,9,2,4],[6,2,nil,7,nil,3,nil,nil,nil],[nil,nil,nil,nil,8,2,6,7,3]])
-c = Sudoku.new([[nil,3,nil,nil,nil,nil,4,nil,7],[1,nil,8,nil,5,nil,nil,nil,nil],[nil,nil,nil,nil,nil,2,nil,9,nil],[nil,nil,6,5,1,nil,2,4,nil],[nil,nil,nil,nil,nil,nil,nil,nil,nil],[nil,4,2,nil,7,9,3,nil,nil],[nil,1,nil,2,nil,nil,nil,nil,nil],[nil,nil,nil,nil,8,nil,1,nil,4],[8,nil,5,nil,nil,nil,nil,3,nil]])
-d = Sudoku.new([[3,nil,nil,nil,nil,nil,4,nil,7],[1,nil,8,nil,5,nil,nil,nil,nil],[nil,nil,nil,nil,nil,2,nil,9,nil],[nil,nil,6,5,1,nil,2,4,nil],[nil,nil,nil,nil,nil,nil,nil,nil,nil],[nil,4,2,nil,7,9,3,nil,nil],[nil,1,nil,2,nil,nil,nil,nil,nil],[nil,nil,nil,nil,8,nil,1,nil,4],[8,nil,5,nil,nil,nil,nil,3,nil]])
-e = Sudoku.new([[1,2,3,4,5,6,7,8,9],[nil,nil,nil,nil,nil,nil,nil,nil,nil],[nil,nil,nil,nil,nil,nil,nil,nil,nil],[nil,nil,nil,nil,nil,nil,nil,nil,nil],[nil,nil,nil,nil,nil,nil,nil,nil,nil],[nil,nil,nil,nil,nil,nil,nil,nil,nil],[nil,nil,nil,nil,nil,nil,nil,nil,nil],[nil,nil,nil,nil,nil,nil,nil,nil,nil],[nil,nil,nil,nil,nil,nil,nil,nil,nil]])
-
-e.solve!
-
