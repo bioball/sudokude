@@ -1,1 +1,1 @@
-This is a Sudoku solver app, written in Ruby. Included is a spec file to show its proper behavior.
+This is a Sudoku solver, written in Ruby. Solve puzzles by creating instances of Sudoku classes with the puzzle being an array within an array, and calling .solve! on the puzzle.
