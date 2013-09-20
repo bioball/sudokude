@@ -97,25 +97,25 @@ module Sudokude
         end  
       end
 
-      print
+      return @sudoku
 
     end
 
     private
 
-    # Array#compact removes all nils. A solved puzzle has no nils to remove.
-    def solved
-      @sudoku.values.compact.size == 81               
-    end
+      # Array#compact removes all nils. A solved puzzle has no nils to remove.
+      def solved
+        @sudoku.values.compact.size == 81               
+      end
 
 
-    # This evaluates the number of solved keys in the puzzle. If no new blanks have been
-    # filled in over multiple passes through the solving methods, then the puzzle cannot
-    # be solved.
-    def unsolvable
-      @keysizes << @sudoku.values.compact.size
-      @keysizes[-1] == @keysizes[-3]
-    end
+      # This evaluates the number of solved keys in the puzzle. If no new blanks have been
+      # filled in over multiple passes through the solving methods, then the puzzle cannot
+      # be solved.
+      def unsolvable
+        @keysizes << @sudoku.values.compact.size
+        @keysizes[-1] == @keysizes[-3]
+      end
 
   end
 
