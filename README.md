@@ -6,8 +6,8 @@ Published on rubygems here: [https://rubygems.org/gems/sudokude](https://rubygem
 This project initially started as a ruby exercise, just to write a function that could solve Sudoku puzzles. After completion, I decided to turn it into a gem, because, why not?
 
 This is a very simple gem, and it provides two functions
-1.  It can solve a sudoku puzzle
-2.  It can print the sudoku puzzle (solved or unsolved)
+1.  It can solve a sudoku puzzle via <.solve!>
+2.  It can print the sudoku puzzle (solved or unsolved) via <.print>
 
 Quickstart
 -------------
