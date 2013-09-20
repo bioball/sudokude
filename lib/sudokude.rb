@@ -36,7 +36,7 @@ module Sudokude
     end
 
     def print
-      @sudoku.values.each_slice(9).to_a.each do |row| 
+      self.each do |row| 
         row.map! do |e| 
           if e.nil?
             "n"
@@ -97,7 +97,7 @@ module Sudokude
         end  
       end
 
-      return @sudoku
+      return @sudoku.values.each_slice(9).to_a
 
     end
 
