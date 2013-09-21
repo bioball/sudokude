@@ -10,6 +10,12 @@ This is a very simple gem, and it provides two functions
 1.  It can solve a sudoku puzzle via `.solve!`
 2.  It can print the sudoku puzzle (solved or unsolved) via `.print`
 
+Installation
+------------
+
+`gem install sudokude`
+
+
 Quickstart
 -------------
 1.  Initiate an instance of a Sudoku class with `Sudokude::Sudoku.new()`
