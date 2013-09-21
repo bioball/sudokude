@@ -13,7 +13,7 @@ This is a very simple gem, and it provides two functions
 Quickstart
 -------------
 1.  Initiate an instance of a Sudoku class with `Sudokude::Sudoku.new()`
-2.  Pass a nested array for the Sudoku values. Each blank cell should be passed in as `nil`. The array should consist of 9 sub-arrays, one sub-array for each row in a Sudoku puzzle, in order from top to bottom, and left to right. For example, (this Sudoku puzzle)[http://i.imgur.com/RHDkxUV.png] will look like:
+2.  Pass a nested array for the Sudoku values. Each blank cell should be passed in as `nil`. The array should consist of 9 sub-arrays, one sub-array for each row in a Sudoku puzzle, in order from top to bottom, and left to right. For example, [http://i.imgur.com/RHDkxUV.png](this Sudoku puzzle) will look like:
 
  ```
  [[4,nil,9,1,3,7,nil,nil,nil],
