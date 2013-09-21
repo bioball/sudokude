@@ -93,6 +93,7 @@ module Sudokude
 
         if unsolvable
           puts "Impossible to solve. Best solution (n if no solution):"
+          sudoku.print
           break
         end  
       end
