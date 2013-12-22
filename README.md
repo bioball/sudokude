@@ -17,10 +17,10 @@ Installation
 
 Quickstart
 -------------
-1.  Initiate an instance of a Sudoku class with `Sudokude::Sudoku.new()`
-2.  Pass a nested array for the Sudoku values. Each blank cell should be passed in as `nil`. The array should consist of 9 sub-arrays, one sub-array for each row in a Sudoku puzzle, in order from top to bottom, and left to right. For example, [this sudoku puzzle](http://i.imgur.com/j2nKyg5.png) will look like:
+1.  Initiate an instance of a Sudoku class with `Sudokude::Sudoku#new`
+2.  Pass in a matrix (array of arrays) for a sudoku puzzle. Each blank cell should be passed in as `nil`. The array should consist of 9 sub-arrays, one sub-array for each row in a Sudoku puzzle, in order from top to bottom, and left to right. For example, [this sudoku puzzle](http://i.imgur.com/j2nKyg5.png) will look like:
 
- ``` rb
+``` rb
 [
   [4,nil,9,1,3,7,nil,nil,nil],
   [nil,nil,nil,8,2,9,nil,6,nil],
@@ -32,6 +32,6 @@ Quickstart
   [6,2,nil,7,nil,3,nil,nil,nil],
   [nil,nil,nil,nil,8,2,6,7,3]
 ]
- ```
+```
 
 3.  Call `.sovle!` on the instance to solve. The gem will either return a solved puzzle, or return an error if the puzzle is not possible to solve
