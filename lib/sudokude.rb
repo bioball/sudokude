@@ -1,6 +1,27 @@
+class Hash
+  def sudoku_row(i)
+    self.select { |key, value| key[1].to_i == i }.values
+  end
+
+  def sudoku_column(i)
+    self.select { |key, value| key[0].to_i == i }.values
+  end
+
+  def sudoku_box(i)
+    self.select { |key, value| key[2].to_i == i }.values
+  end
+end
+
+class Array
+  def has_naked_multiple?(item)
+    self.select { |e| (e - item).empty? }.size == item.size
+  end
+end
+
 module Sudokude
   class Sudoku
     def initialize(sudoku)
+      raise TypeError, "Sudoku needs to be initialized with an array" if sudoku.class != Array
       raise "This is not the proper size" if sudoku.map {|e| e.size } != [9,9,9,9,9,9,9,9,9]
       @sudoku = {}
       j = 0
@@ -8,7 +29,7 @@ module Sudokude
       # This code creates a hash table with key indexes for each value.
       # The key is made up of three digits and shows the exact location
       # of the number.
-      sudoku.each do |row|
+      sudoku.each do |sudoku_row|
         9.times do |i|
           if i <= 2 && j <= 2
             b = 0
@@ -29,26 +50,17 @@ module Sudokude
           else
             b = 8
           end
-          @sudoku[i.to_s + j.to_s + b.to_s] = row[i]
+          @sudoku[i.to_s + j.to_s + b.to_s] = sudoku_row[i]
         end
         j += 1
       end
     end
 
-    def print
-      self.each do |row| 
-        row.map! do |e| 
-          if e.nil?
-            "n"
-          else
-            e
-          end
-        end
-        puts row.join(" ")
-      end
+    def to_s
+      @sudoku.values.each_slice(9).to_a.to_s
     end
 
-    def solve!
+    def solve
       unsolved = {}
       @keysizes = []
       @sudoku.each do |key, value|
@@ -62,7 +74,7 @@ module Sudokude
         # Simple elimination method
         unsolved.each do |key, value|
           value.reject! do |number| 
-            (@sudoku.row(key[1].to_i) + @sudoku.column(key[0].to_i) + @sudoku.box(key[2].to_i)).include?(number)
+            (@sudoku.sudoku_row(key[1].to_i) + @sudoku.sudoku_column(key[0].to_i) + @sudoku.sudoku_box(key[2].to_i)).include?(number)
           end
           @sudoku[key] = value[0] if value.size == 1
           unsolved.delete_if { |key, value| value.empty? }
@@ -71,17 +83,17 @@ module Sudokude
         
         # Naked multiples method
         unsolved.each do |key, value|
-          if unsolved.row(key[1].to_i).has_naked_multiple?(value)
+          if unsolved.sudoku_row(key[1].to_i).has_naked_multiple?(value)
             unsolved.each do |nkey, nvalue|
               nvalue.reject! { |n| value.include?(n) } if (!(nvalue-value).empty? && key[1] == nkey[1])
             end
           end
-          if unsolved.column(key[0].to_i).has_naked_multiple?(value)
+          if unsolved.sudoku_column(key[0].to_i).has_naked_multiple?(value)
             unsolved.each do |nkey, nvalue|
               nvalue.reject! { |n| value.include?(n) } if (!(nvalue-value).empty? && key[0] == nkey[0])
             end
           end
-          if unsolved.box(key[2].to_i).has_naked_multiple?(value)
+          if unsolved.sudoku_box(key[2].to_i).has_naked_multiple?(value)
             unsolved.each do |nkey, nvalue|
               nvalue.reject! { |n| value.include?(n) } if (!(nvalue-value).empty? && key[2] == nkey[2])
             end
@@ -93,9 +105,9 @@ module Sudokude
 
         if unsolvable
           puts "Impossible to solve. Best solution (n if no solution):"
-          sudoku.print
+          sudoku.to_s
           break
-        end  
+        end
       end
 
       return @sudoku.values.each_slice(9).to_a
@@ -118,25 +130,5 @@ module Sudokude
         @keysizes[-1] == @keysizes[-3]
       end
 
-  end
-
-  class Hash
-    def row(i)
-      self.select { |key, value| key[1].to_i == i }.values
-    end
-
-    def column(i)
-      self.select { |key, value| key[0].to_i == i }.values
-    end
-
-    def box(i)
-      self.select { |key, value| key[2].to_i == i }.values
-    end
-  end
-
-  class Array
-    def has_naked_multiple?(item)
-      self.select { |e| (e - item).empty? }.size == item.size
-    end
   end
 end
