@@ -22,7 +22,7 @@ module Sudokude
   class Sudoku
     def initialize(sudoku)
       raise TypeError, "Sudoku needs to be initialized with an array" if sudoku.class != Array
-      raise "This is not the proper size" if sudoku.map {|e| e.size } != [9,9,9,9,9,9,9,9,9]
+      raise StandardError, "This is not the proper size" if sudoku.map {|e| e.size }.uniq != [9]
       @sudoku = {}
       j = 0
 
