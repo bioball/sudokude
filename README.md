@@ -3,9 +3,7 @@ Sudokude
 
 Published on rubygems here: [https://rubygems.org/gems/sudokude](https://rubygems.org/gems/sudokude)
 
-This project initially started as a ruby exercise, just to write a function that could solve Sudoku puzzles. After completion, I decided to turn it into a gem, because, why not?
-
-This is a very simple gem, and it provides two functions:
+Sudokude solves Sudoku puzzles for you! It's a very simple gem, and exposes two methods:
 
 1.  It can solve a sudoku puzzle via `.solve`
 2.  It can stringify the sudoku puzzle (solved or unsolved) via `.to_s`
